@@ -239,7 +239,7 @@ fig.add_trace(go.Scatter(
 ))
 
 fig.update_layout(
-    title="Pronóstico de Datos Originales",
+    title="Gráfica del Pronóstico de las Remesas de Guatemala del año 2002 al 2024 con Datos Originales (Millones de USD)",
     xaxis_title="Periodo (t)",
     yaxis_title="Divisas",
     hovermode="x unified",
