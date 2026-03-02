@@ -60,11 +60,12 @@ st.markdown("""
 
 #-----------------------------------------------------------------------------------
 
-# Títulos
+# Títulos ---------------------------------------------------------------------------
 st.markdown("<h1>PARCIAL UNO - PROYECTO</h1>", unsafe_allow_html=True)
 st.markdown("<h2>Del Dato al Futuro: Validación econométrica de metodologías para pronosticar remesas en Guatemala</h2>", unsafe_allow_html=True)
+#------------------------------------------------------------------------------------
 
-# Leer archivo CSV
+# Leer archivo CSV -------------------------------------------------------------------
 archivo = 'Remesas2002_2026.csv'
 st.set_page_config(page_title="Dashboard Económico", layout="centered")
 
@@ -89,7 +90,9 @@ datos["Fecha"] = pd.to_datetime(
 )
 
 datos = datos.sort_values("Fecha")
+# ------------------------------------------------------------------------------------------
 
+# Filtro -----------------------------------------------------------------------------------
 st.sidebar.header("Filtros")
 
 # Filtro de Año (rango)
@@ -140,8 +143,9 @@ datos_filtrados = datos[
     (datos["Ano"] <= rango_anio[1]) &
     (datos["Mes"].isin(meses_seleccionados))
 ]
+# -------------------------------------------------------------------------------------
 
-# Crear gráfico
+# Gráfico de Divisas 2002-2026 ----------------------------------------------------------
 fig = px.line(
     datos_filtrados,
     x="Fecha",
@@ -153,7 +157,7 @@ fig = px.line(
 
 fig.update_layout(
     title=f"Remesas en Guatemala ({rango_anio[0]} - {rango_anio[1]})",
-    xaxis_title="Codificación (t)",
+    xaxis_title="Año",
     yaxis_title="Divisas (Millones USD)",
     title_x=0.5,
     title_font=dict(size=20),
@@ -162,9 +166,10 @@ fig.update_layout(
 
 fig.update_traces(marker=dict(size=4, color="#4A0099"),
     line=dict(width=1.5, color="#4A0099"))
-
 st.plotly_chart(fig, use_container_width=True)
+# ---------------------------------------------------------------------------------------------
 
+# Modelo de Datos Originales ------------------------------------------------------------------
 st.subheader("Modelo de Regresión Lineal - Datos Originales")
 
 # Variable dependiente
@@ -189,7 +194,7 @@ y_pred = modelo.predict(t)
 t_futuro = np.arange(codfi, codfi + pronostico).reshape(-1, 1)
 pronosticos = modelo.predict(t_futuro)
 
-# Tabla de pronóstico
+# Tabla de pronóstico de Datos Originales -------------------------------------------------------
 tabla_pronostico = pd.DataFrame({
     't': t_futuro.flatten(),
     'Pronostico': pronosticos
@@ -198,10 +203,7 @@ tabla_pronostico = pd.DataFrame({
 st.subheader("Tabla de Pronóstico")
 st.dataframe(tabla_pronostico, use_container_width=True)
 
-
-# ----------------------------
-# GRÁFICA INTERACTIVA
-# ----------------------------
+# Gráfica de Datos Originales ----------------------------
 
 fig = go.Figure()
 import plotly.graph_objects as go
@@ -247,5 +249,5 @@ fig.update_layout(
 )
 
 st.plotly_chart(fig, use_container_width=True)
-
+# ----------------------------------------------------------------------------------------------------------------
 
