@@ -200,8 +200,28 @@ tabla_pronostico = pd.DataFrame({
     'Pronostico': pronosticos
 })
 
+tabla_pronostico["Pronostico"] = tabla_pronostico["Pronostico"].round(2)
+
+# Estilo profesional
+styled_table = (
+    tabla_pronostico.style
+    .background_gradient(cmap="Blues", subset=["Pronostico"])
+    .set_properties(**{
+        'border': '1px solid #000000',
+        'text-align': 'center',
+        'font-size': '14px'
+    })
+    .set_table_styles([
+        {'selector': 'th',
+         'props': [('background-color', '#0E1117'),
+                   ('color', 'white'),
+                   ('font-weight', 'bold'),
+                   ('text-align', 'center')]}
+    ])
+)
+
 st.markdown("**Tabla de Pronósticos:**")
-st.dataframe(tabla_pronostico, use_container_width=True)
+st.dataframe(styled_table, use_container_width=True)
 
 # Gráfica de Datos Originales ----------------------------
 
