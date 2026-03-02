@@ -72,7 +72,29 @@ st.set_page_config(page_title="Dashboard Económico", layout="centered")
 # Cargar datos automáticamente
 datos = pd.read_csv(archivo, sep=';')
 st.markdown("**Vista previa de los Datos:**")
-st.dataframe(datos)
+styled_datos = (
+    datos.style
+    .set_table_styles([
+        {
+            'selector': 'th',
+            'props': [
+                ('background-color', '#6A0DAD'),
+                ('color', 'white'),
+                ('font-weight', 'bold'),
+                ('text-align', 'center')
+            ]
+        },
+        {
+            'selector': 'td',
+            'props': [
+                ('border', '1px solid #ddd'),
+                ('text-align', 'center')
+            ]
+        }
+    ])
+)
+
+st.dataframe(styled_datos, use_container_width=True)
 
 # Convertir mes texto a número
 mes_dict = {
