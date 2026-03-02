@@ -66,17 +66,14 @@ st.markdown("<h2>Del Dato al Futuro: Validación econométrica de metodologías 
 #------------------------------------------------------------------------------------
 
 # Leer archivo CSV -------------------------------------------------------------------
+# Leer archivo CSV
 archivo = 'Remesas2002_2026.csv'
 st.set_page_config(page_title="Dashboard Económico", layout="centered")
 
 # Cargar datos automáticamente
 datos = pd.read_csv(archivo, sep=';')
 st.markdown("**Vista previa de los Datos:**")
-# Cargar datos automáticamente datos = pd.read_csv(archivo, sep=';') st.markdown("**Vista previa de los Datos:**") 
-st.dataframe(datos) # Convertir mes texto a número mes_dict = { "Enero":1,"Febrero":2,"Marzo":3,"Abril":4,"Mayo":5,"Junio":6, "Julio":7,"Agosto":8,"Septiembre":9,"Octubre":10,"Noviembre":11,"Diciembre":12 } 
-datos["Mes_num"] = datos["Mes"].map(mes_dict) 
-# Crear columna fecha real datos["Fecha"] = 
-pd.to_datetime( dict(year=datos["Ano"], month=datos["Mes_num"], day=1) ) datos = datos.sort_values("Fecha")
+st.dataframe(datos)
 
 # Convertir mes texto a número
 mes_dict = {
