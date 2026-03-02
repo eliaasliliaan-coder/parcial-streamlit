@@ -1,3 +1,4 @@
+# Carga de Librerias -----------------------------------------------------------
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -11,8 +12,9 @@ from sklearn.linear_model import LinearRegression
 
 # Configuración de página
 st.set_page_config(page_title="Dashboard Económico", layout="wide")
+# -------------------------------------------------------------------------------
 
-# Estilo Harvard Growth Lab
+# Estilo Harvard Growth Lab -----------------------------------------------------
 st.markdown("""
     <style>
     .main {
@@ -56,6 +58,7 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
+#-----------------------------------------------------------------------------------
 
 # Títulos
 st.markdown("<h1>PARCIAL UNO - PROYECTO</h1>", unsafe_allow_html=True)
