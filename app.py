@@ -205,7 +205,7 @@ tabla_pronostico["Pronostico"] = tabla_pronostico["Pronostico"].round(2)
 # Estilo profesional
 styled_table = (
     tabla_pronostico.style
-    .background_gradient(cmap="Blues", subset=["Pronostico"])
+    .background_gradient(cmap="Purples", subset=["Pronostico"])
     .set_properties(**{
         'border': '1px solid #000000',
         'text-align': 'center',
@@ -213,7 +213,7 @@ styled_table = (
     })
     .set_table_styles([
         {'selector': 'th',
-         'props': [('background-color', '#0E1117'),
+         'props': [('background-color', '##4A0099'),
                    ('color', 'white'),
                    ('font-weight', 'bold'),
                    ('text-align', 'center')]}
