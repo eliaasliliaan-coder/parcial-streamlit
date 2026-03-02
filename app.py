@@ -193,7 +193,7 @@ tabla_pronostico = pd.DataFrame({
 })
 
 st.subheader("Tabla de Pronóstico")
-st.dataframe(tabla_pronostico)
+st.dataframe(tabla_pronostico, use_container_width=True)
 
 
 # ----------------------------
