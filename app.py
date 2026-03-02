@@ -72,28 +72,11 @@ st.set_page_config(page_title="Dashboard Económico", layout="centered")
 # Cargar datos automáticamente
 datos = pd.read_csv(archivo, sep=';')
 st.markdown("**Vista previa de los Datos:**")
-styled_datos = datos.style.set_table_styles([
-    {
-        'selector': 'th',
-        'props': [
-            ('background-color', '##4A0099'),  # morado
-            ('color', 'white'),
-            ('font-weight', 'bold'),
-            ('text-align', 'center')
-        ]
-    },
-    {
-        'selector': 'td',
-        'props': [
-            ('text-align', 'center'),
-            ('border', '1px solid #ddd')
-        ]
-    }
-]).hide_index()  # opcional, si no quieres columna de índice
-
-# Mostrar en Streamlit como HTML
-st.markdown("**Vista previa de los Datos:**", unsafe_allow_html=True)
-st.markdown(styled_datos.to_html(), unsafe_allow_html=True)
+# Cargar datos automáticamente datos = pd.read_csv(archivo, sep=';') st.markdown("**Vista previa de los Datos:**") 
+st.dataframe(datos) # Convertir mes texto a número mes_dict = { "Enero":1,"Febrero":2,"Marzo":3,"Abril":4,"Mayo":5,"Junio":6, "Julio":7,"Agosto":8,"Septiembre":9,"Octubre":10,"Noviembre":11,"Diciembre":12 } 
+datos["Mes_num"] = datos["Mes"].map(mes_dict) 
+# Crear columna fecha real datos["Fecha"] = 
+pd.to_datetime( dict(year=datos["Ano"], month=datos["Mes_num"], day=1) ) datos = datos.sort_values("Fecha")
 
 # Convertir mes texto a número
 mes_dict = {
