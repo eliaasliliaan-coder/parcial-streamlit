@@ -72,29 +72,28 @@ st.set_page_config(page_title="Dashboard Económico", layout="centered")
 # Cargar datos automáticamente
 datos = pd.read_csv(archivo, sep=';')
 st.markdown("**Vista previa de los Datos:**")
-styled_datos = (
-    datos.style
-    .set_table_styles([
-        {
-            'selector': 'th',
-            'props': [
-                ('background-color', '#4A0099'),
-                ('color', 'white'),
-                ('font-weight', 'bold'),
-                ('text-align', 'center')
-            ]
-        },
-        {
-            'selector': 'td',
-            'props': [
-                ('border', '1px solid #ddd'),
-                ('text-align', 'center')
-            ]
-        }
-    ])
-)
+styled_datos = datos.style.set_table_styles([
+    {
+        'selector': 'th',
+        'props': [
+            ('background-color', '##4A0099'),  # morado
+            ('color', 'white'),
+            ('font-weight', 'bold'),
+            ('text-align', 'center')
+        ]
+    },
+    {
+        'selector': 'td',
+        'props': [
+            ('text-align', 'center'),
+            ('border', '1px solid #ddd')
+        ]
+    }
+]).hide_index()  # opcional, si no quieres columna de índice
 
-st.dataframe(styled_datos, use_container_width=True)
+# Mostrar en Streamlit como HTML
+st.markdown("**Vista previa de los Datos:**", unsafe_allow_html=True)
+st.markdown(styled_datos.to_html(), unsafe_allow_html=True)
 
 # Convertir mes texto a número
 mes_dict = {
