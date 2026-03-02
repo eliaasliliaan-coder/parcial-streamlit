@@ -162,9 +162,7 @@ fig.update_traces(marker=dict(size=4, color="#4A0099"),
 
 st.plotly_chart(fig, use_container_width=True)
 
-st.markdown("<h4>Pronóstico de Remesas con Datos Originales</h4>", unsafe_allow_html=True)
-
-st.subheader("📈 Modelo de Regresión Lineal - Datos Originales")
+st.subheader("Modelo de Regresión Lineal - Datos Originales")
 
 # Variable dependiente
 y = datos['Divisas'].values
@@ -187,6 +185,16 @@ y_pred = modelo.predict(t)
 # Valores futuros
 t_futuro = np.arange(codfi, codfi + pronostico).reshape(-1, 1)
 pronosticos = modelo.predict(t_futuro)
+
+# Tabla de pronóstico
+tabla_pronostico = pd.DataFrame({
+    't': t_futuro.flatten(),
+    'Pronostico': pronosticos
+})
+
+st.subheader("Tabla de Pronóstico")
+st.dataframe(tabla_pronostico)
+
 
 # ----------------------------
 # GRÁFICA INTERACTIVA
