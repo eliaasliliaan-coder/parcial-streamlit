@@ -159,7 +159,7 @@ fig = px.line(
 fig.update_layout(
     title=f"Remesas en Guatemala ({rango_anio[0]} - {rango_anio[1]})",
     xaxis_title="Año",
-    yaxis_title="Divisas (Millones USD)",
+    yaxis_title="Divisas (Millones de USD)",
     title_x=0.5,
     title_font=dict(size=20),
     height=650
@@ -262,7 +262,7 @@ fig.add_trace(go.Scatter(
 fig.update_layout(
     title="Gráfica del Pronóstico de las Remesas de Guatemala del año 2002 al 2024 con Datos Originales (Millones de USD)",
     xaxis_title="Periodo (t)",
-    yaxis_title="Divisas",
+    yaxis_title="Divisas (Millones de USD)",
     hovermode="x unified",
     template="plotly_white",
     title_font=dict(size=20),
