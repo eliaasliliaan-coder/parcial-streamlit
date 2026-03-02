@@ -78,7 +78,7 @@ styled_datos = (
         {
             'selector': 'th',
             'props': [
-                ('background-color', '#6A0DAD'),
+                ('background-color', '#4A0099'),
                 ('color', 'white'),
                 ('font-weight', 'bold'),
                 ('text-align', 'center')
