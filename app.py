@@ -200,7 +200,7 @@ tabla_pronostico = pd.DataFrame({
     'Pronostico': pronosticos
 })
 
-st.subheader("Tabla de Pronóstico")
+st.markdown("**Tabla de Pronósticos:**")
 st.dataframe(tabla_pronostico, use_container_width=True)
 
 # Gráfica de Datos Originales ----------------------------
@@ -239,7 +239,7 @@ fig.add_trace(go.Scatter(
 ))
 
 fig.update_layout(
-    title="Serie de Tiempo - Datos Originales",
+    title="Pronóstico de Datos Originales",
     xaxis_title="Periodo (t)",
     yaxis_title="Divisas",
     hovermode="x unified",
